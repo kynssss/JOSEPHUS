@@ -17,7 +17,8 @@ public class JosephusSim {
          // remember the last node as the one in front of the next to get eliminated
          
          // generate, print, and save the random elimination count
-
+         Random rand = new Random();
+         eliminationCount = rand.nextInt(size / 2) + 1;
       } catch(FileNotFoundException e) {
          System.out.println("Something went wrong with " + fileName);
       }
