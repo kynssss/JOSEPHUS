@@ -28,25 +28,31 @@ public class JosephusSim {
    }
    
    public void eliminate() {
-      String eliminateName = "";
-      ListNode temp = "";
-      ListNode newFront = "";
-      ListNode nexLast = "";
+      PersonNode eliminateName = null;
+      PersonNode cur = circle;
       // count to the elimination count
       for(int i = 0; i < eliminationCount; i++) {
-         eliminationName = circle.name.next;   
-      }  
-      // Get new last
+         eliminateName = circle.next;   
+      } 
+      //Get last
+      while(cur.next != null) {
+         cur = cur.next;
+      }
+      PersonNode last = cur;
+      cur = circle;
+      //Get new last
       for(int i = 0; i < eliminationCount - 1; i++) {
-         newLast = circle.name.next;   
-      }  
- 
+         cur = cur.next;
+      }
+      PersonNode newLast = cur;
+      
       // print who will be eliminated
-      System.out.println(eliminationName + " eliminated!");
+      System.out.println(eliminateName + " eliminated!");
       // eliminate the person and update "front" of the circle and size
-      newFront = eliminationName.next;
-      eliminationName.next = null;
-      newLast.next = null;
+      last.next = circle;                       // point last to front
+      PersonNode newFront = eliminateName.next; // get new front
+      newLast.next = newFront;                  // point new last to new front
+      circle = newFront;
       
    }
    
