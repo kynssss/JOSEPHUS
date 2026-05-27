@@ -28,25 +28,44 @@ public class JosephusSim {
    }
    
    public void eliminate() {
+      String eliminateName = "";
+      ListNode temp = "";
+      ListNode newFront = "";
+      ListNode nexLast = "";
       // count to the elimination count
-      
+      for(int i = 0; i < eliminationCount; i++) {
+         eliminationName = circle.name.next;   
+      }  
+      // Get new last
+      for(int i = 0; i < eliminationCount - 1; i++) {
+         newLast = circle.name.next;   
+      }  
+ 
       // print who will be eliminated
-      
+      System.out.println(eliminationName + " eliminated!");
       // eliminate the person and update "front" of the circle and size
-
+      newFront = eliminationName.next;
+      eliminationName.next = null;
+      newLast.next = null;
+      
    }
    
    public boolean isOver() {
       // check if there's only one person left in the circle
-      return false;
+      return size == 1;
    }
    
    public String toString() {
+      String result = "";
       // if there's only one person left, print them as the last survivor
-      
+      if(size == 1) {
+         result = circle.name + " is the last survivor!";
+      }
       // print the remaining survivors (watch out for infinite loop since list is circular)
-
-      return "";
+      for(int i = 1; i <= size; i++) {
+         result = i + "-" + circle.name + ", ";
+      }
+      return result;
    }
 
 }
