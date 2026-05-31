@@ -14,7 +14,7 @@ public class JosephusSim {
          size = 0;
          // make the ring circular by attaching last node's next to front
          while(file.hasNextLine()) {
-            String name = file.nextLine().trim();
+            String name = file.nextLine();
             if(!name.isEmpty()) {
                add(name);
             }
@@ -58,12 +58,11 @@ public class JosephusSim {
          return;
       }
      
-      PersonNode cur = circle;
+      PersonNode last = circle;
       // Get last
       for(int i = 1; i < eliminationCount - 1; i++) {
-         cur = cur.next;   
+         last = last.next;   
       } 
-      PersonNode last = cur;
       PersonNode eliminationNode = last.next; 
       // print who will be eliminated
       System.out.println(eliminationNode.name + " eliminated!");
